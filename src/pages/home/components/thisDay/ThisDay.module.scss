@@ -1,0 +1,38 @@
+@import './src/styles/variables';
+
+.thisDay {
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  background: $lite-background;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+}
+
+.topBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 30px;
+  svg{
+    width: 119px;
+    height: 119px;
+  }
+  .currentTemp {
+    font-size: 96px;
+    font-weight: 500;
+    color: $primary-color;
+  }
+  .currentDay {
+    font-size: 40px;
+    color: $lite-color;
+  }
+}
+
+.bottomBlock {
+  .currentTime, .currentCity {
+    color: $base-color;
+    font-size: 25px;
+  }
+}
