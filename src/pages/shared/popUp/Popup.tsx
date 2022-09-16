@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {GlobalSvgSelector} from '../../../assets/icons/global/GlobalSvgSelector';
+import { GlobalSvgSelector } from '../../../assets/icons/global/GlobalSvgSelector';
 
 import s from './Popup.module.scss';
 
