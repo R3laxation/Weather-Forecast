@@ -68,7 +68,7 @@ export const Days = () => {
       <Tabs />
       <div className={s.days}>
         {days.map((day: DayType) => (
-          <Day day={day} key={Math.random()} />
+          <Day day={day} key={day.day} />
         ))}
       </div>
     </>

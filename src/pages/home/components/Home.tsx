@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
-import { useCustomDispatch } from '../../../hooks/store';
+import { useCustomDispatch, useCustomSelector } from '../../../hooks/store';
+import { selectCurrentWeatherData } from '../../../store/selectors';
 import { fetchCurrentWeather } from '../../../store/thunks/fetchCurrentWeather';
 
 import { Days } from './days/Days';
@@ -10,6 +11,7 @@ import { ThisDayInfo } from './thisDayInfo/ThisDayInfo';
 
 export const Home = () => {
   const dispatch = useCustomDispatch();
+  const { weather } = useCustomSelector(selectCurrentWeatherData);
 
   useEffect(() => {
     dispatch(fetchCurrentWeather('london'));
@@ -18,7 +20,7 @@ export const Home = () => {
   return (
     <div className={s.home}>
       <div className={s.wrapper}>
-        <ThisDay />
+        <ThisDay weather={weather} />
         <ThisDayInfo />
       </div>
       <Days />

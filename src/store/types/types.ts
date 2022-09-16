@@ -1,1 +1,5 @@
-export type WeatherType = {};
+export type WeatherType = {
+  main: {
+    temp: number;
+  };
+};
