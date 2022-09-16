@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { GlobalSvgSelector } from '../../../assets/icons/global/GlobalSvgSelector';
-import { ItemType } from '../../home/components/thisDayInfo/ThisDayInfo';
-import { ThisDayItem } from '../../home/components/thisDayInfo/ThisDayItem';
+import {GlobalSvgSelector} from '../../../assets/icons/global/GlobalSvgSelector';
 
 import s from './Popup.module.scss';
 
@@ -48,9 +46,9 @@ export const Popup = () => {
         </div>
         <div className={s.thisDayInfo}>
           <div className={s.thisDayInfoItems}>
-            {items.map((item: ItemType) => (
-              <ThisDayItem item={item} key={item.iconId} />
-            ))}
+            {/* {items.map((item: ItemType) => ( */}
+            {/*  <ThisDayItem item={item} key={item.iconId} /> */}
+            {/* ))} */}
           </div>
         </div>
         <div className={s.close}>
