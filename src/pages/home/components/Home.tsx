@@ -1,29 +1,33 @@
 import React, { useEffect } from 'react';
 
 import { useCustomDispatch, useCustomSelector } from '../../../hooks/store';
-import { selectCurrentWeatherData } from '../../../store/selectors';
 import { fetchCurrentWeather } from '../../../store/thunks/fetchCurrentWeather';
 
-import { Days } from './days/Days';
 import s from './Home.module.scss';
 import { ThisDay } from './thisDay/ThisDay';
 import { ThisDayInfo } from './thisDayInfo/ThisDayInfo';
 
 export const Home = () => {
   const dispatch = useCustomDispatch();
-  const { weather } = useCustomSelector(selectCurrentWeatherData);
-
+  const city = useCustomSelector(state => state.currentWeatherSliceReducer.cityInfo.name);
+  const { lat, lon } = useCustomSelector(
+    state => state.currentWeatherSliceReducer.cityInfo,
+  );
+  const {
+    weather,
+    cityInfo: { name },
+  } = useCustomSelector(state => state.currentWeatherSliceReducer);
   useEffect(() => {
-    dispatch(fetchCurrentWeather('london'));
-  }, []);
+    dispatch(fetchCurrentWeather({ lat, lon, city }));
+  }, [lat, lon, city]);
 
   return (
     <div className={s.home}>
       <div className={s.wrapper}>
-        <ThisDay weather={weather} />
-        <ThisDayInfo />
+        <ThisDay weather={weather} name={name} />
+        <ThisDayInfo weather={weather} />
       </div>
-      <Days />
+      {/* <Days /> */}
     </div>
   );
 };
