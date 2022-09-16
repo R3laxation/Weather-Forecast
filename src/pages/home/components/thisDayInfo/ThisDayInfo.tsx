@@ -1,31 +1,34 @@
 import React from 'react';
 
 import cloud from '../../../../assets/images/Cloud image.png';
+import { WeatherType } from '../../../../store/types/types';
 
 import s from './ThisDayInfo.module.scss';
 import { ThisDayItem } from './ThisDayItem';
 
-export const ThisDayInfo = () => {
+export const ThisDayInfo = ({ weather }: PropsType) => {
   const items = [
     {
       iconId: 'temp',
       name: 'Температура',
-      value: '20° - ощущается как 17°',
+      value: `${Math.floor(weather.main.temp)}° - ощущается как ${Math.floor(
+        weather.main.feels_like,
+      )}°`,
     },
     {
       iconId: 'pressure',
       name: 'Давление',
-      value: '765 мм ртутного столба - нормальное',
+      value: `${weather.main.pressure} мм ртутного столба - нормальное`,
     },
     {
       iconId: 'precipitation',
-      name: 'Осадки',
-      value: 'Без осадков',
+      name: 'Влажность',
+      value: `${weather.main.humidity} %`,
     },
     {
       iconId: 'wind',
       name: 'Ветер',
-      value: '3 м/с юго-запад - легкий ветер',
+      value: `${weather.wind.speed} м/с юго-запад - легкий ветер`,
     },
   ];
 
@@ -33,7 +36,7 @@ export const ThisDayInfo = () => {
     <div className={s.thisDayInfo}>
       <div className={s.thisDayInfoItems}>
         {items.map((item: ItemType) => (
-          <ThisDayItem item={item} key={item.iconId} />
+          <ThisDayItem item={item} key={item.iconId} weather={weather} />
         ))}
       </div>
       <img src={cloud} alt="облачко" className={s.cloudImage} />
@@ -45,4 +48,7 @@ export type ItemType = {
   iconId: string;
   name: string;
   value: string;
+};
+export type PropsType = {
+  weather: WeatherType;
 };
