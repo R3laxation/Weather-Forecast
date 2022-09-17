@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 
+import { useSelector } from 'react-redux';
+
 import { useCustomDispatch, useCustomSelector } from '../../../hooks/store';
 import { fetchCurrentWeather } from '../../../store/thunks/fetchCurrentWeather';
 
+import { Days } from './days/Days';
 import s from './Home.module.scss';
 import { ThisDay } from './thisDay/ThisDay';
 import { ThisDayInfo } from './thisDayInfo/ThisDayInfo';
